@@ -11,29 +11,52 @@ import Button from '../Button';
 const Header = () => {
   return (
     <header>
-      <SuperHeader>
-        <Row>
-          <ActionGroup>
-            <button>
-              <Search size={24} />
-            </button>
-            <button>
-              <Menu size={24} />
-            </button>
-          </ActionGroup>
-          <ActionGroup>
-            <button>
-              <User size={24} />
-            </button>
-          </ActionGroup>
-        </Row>
-      </SuperHeader>
-      <MainHeader>
+      <MobileHeader>
+        <SuperHeader>
+          <Row>
+            <ActionGroup>
+              <button>
+                <Search size={24} />
+              </button>
+              <button>
+                <Menu size={24} />
+              </button>
+            </ActionGroup>
+            <ActionGroup>
+              <button>
+                <User size={24} />
+              </button>
+            </ActionGroup>
+          </Row>
+        </SuperHeader>
+        <MainHeader>
+          <Logo />
+        </MainHeader>
+      </MobileHeader>
+      <DesktopHeader>
+        <ActionGroup>
+          <button>
+            <Search size={24} />
+          </button>
+          <button>
+            <Menu size={24} />
+          </button>
+        </ActionGroup>
         <Logo />
-      </MainHeader>
+        <SubscribeGroup>
+          <Button>Subscribe</Button>
+          <SubscriberLink>Already a subscriber?</SubscriberLink>
+        </SubscribeGroup>
+      </DesktopHeader>
     </header>
   );
 };
+
+const MobileHeader = styled.div`
+  @media ${QUERIES.laptopAndUp} {
+    display: none;
+  }
+`;
 
 const SuperHeader = styled.div`
   padding: 16px 0;
@@ -65,6 +88,36 @@ const MainHeader = styled(MaxWidthWrapper)`
   justify-content: center;
   margin-top: 32px;
   margin-bottom: 48px;
+`;
+
+const DesktopHeader = styled(MaxWidthWrapper)`
+  display: none;
+
+  @media ${QUERIES.laptopAndUp} {
+    display: grid;
+    margin-top: 32px;
+    margin-bottom: 128px;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+`;
+
+const SubscribeGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 16px;
+  justify-self: end;
+`;
+
+const SubscriberLink = styled.a`
+  color: var(--color-gray-900);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 0.875rem;
+  text-decoration: underline;
 `;
 
 export default Header;
