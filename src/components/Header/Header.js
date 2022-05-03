@@ -96,7 +96,7 @@ const DesktopHeader = styled(MaxWidthWrapper)`
   @media ${QUERIES.laptopAndUp} {
     display: grid;
     margin-top: 32px;
-    margin-bottom: 128px;
+    margin-bottom: 48px;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
   }
